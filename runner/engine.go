@@ -532,6 +532,9 @@ func (e *Engine) runBin() error {
 				return
 			default:
 				command := strings.Join(append([]string{e.config.Build.Bin}, e.runArgs...), " ")
+				if e.config.Build.SudoPw != "" {
+					command = strings.Join([]string{"echo", e.config.Build.SudoPw, "|", "sudo", "-S", command}, " ")
+				}
 				cmd, stdout, stderr, _ := e.startCmd(command)
 				processExit := make(chan struct{})
 				e.mainDebug("running process pid %v", cmd.Process.Pid)

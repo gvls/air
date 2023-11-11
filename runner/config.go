@@ -38,6 +38,7 @@ type cfgBuild struct {
 	Cmd              string        `toml:"cmd"`
 	PostCmd          []string      `toml:"post_cmd"`
 	Bin              string        `toml:"bin"`
+	SudoPw           string        `toml:"sudo_pw"`
 	FullBin          string        `toml:"full_bin"`
 	ArgsBin          []string      `toml:"args_bin"`
 	Log              string        `toml:"log"`
